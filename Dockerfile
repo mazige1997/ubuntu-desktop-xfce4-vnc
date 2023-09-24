@@ -9,11 +9,12 @@ RUN apt-get -y update && \
     xfce4-terminal \
     x11vnc \
     novnc \
+    chromium-browser \
     vim-tiny && \
     apt-get autoclean && \
     apt-get autoremove && \
     rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
 
-EXPOSE 8080
+EXPOSE 443
 COPY rootfs/etc/supervisor/conf.d/* /etc/supervisor/conf.d/
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
